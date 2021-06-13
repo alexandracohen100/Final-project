@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link href="src/styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <style>
+    h1 {
+      color: purple;
+      text-align: center;
+      border-radius: 20px;
+      padding: 30px;
+      margin: 50px;
+      box-shadow: 0 4px 6px 0 rgba(34, 60, 80, 0.16);
+      transition: 200ms all ease-in-out;
+      box-shadow: 5px 5px 2px gray;
+      background: rgb(182, 76, 177)
+    
+}
+   .buttonCSS1 {
+      color: white;
+      background: rgb(128, 136, 209);
+      border-radius: 20px;
+      border: white;
+      box-shadow: 5px 5px 2px gray;
+      padding: 10px;
+      margin: 20px;
+      id="button-1";
+    }
+       .buttonCSS2 {
+      color: white;
+      background: rgb(128, 136, 209);
+      border-radius: 20px;
+      border: white;
+      box-shadow: 5px 5px 2px gray;
+      padding: 10px;
+      id="button-2";
+    }
+.buttonCSS1:hover {
+      color: purple;
+      border-radius: 20px;
+      background-color: white;
+    }
+
+.buttonCSS2:hover {
+      color: purple;
+      border-radius: 20px;
+      background-color: white;
+    }
+    h2 {
+      text-align: center;
+      margin: 30px;
+      padding: 20px;
+      color: purple;
+    }
+    form {
+      width: 300px;
+      height: 300px;
+      margin: auto;
+    }
+    .back {
+      background: url(https://images.pexels.com/photos/907485/pexels-photo-907485.jpeg?cs=srgb&dl=pexels-ithalu-dominguez-907485.jpg&fm=jpg);
+      display: block;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 7px 7px 15px rgb(0, 0, 0, 0.15);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    .row {
+      color: rgb(211, 50, 77);
+      font-weight: bold;
+      text-align: center      
+      }
+    
+     .row:hover {
+      color: purple;
+      transition: 150ms all ease-in-out;
+    }
+  
+    h3 {
+      color: rgb(214, 67, 92);
+      text-align: center;
+    }
+
+    h4 {
+    color: rgb(214, 67, 92);
+    padding: 50px;
+    }
+    p {
+        padding: 40px;
+        color: purple;
+        margin: -50px;
+        font-size: 30px;
+        width: 500px;
+        text-align: left; 
+                }
+  </style>
+  <body>
+    <div class="container">
+      <div class="back">
+        <br />
+        <br />
+        <h1>Weather App</h1>
+                     <h2>Search for your local weather!</h2>
+        <h3 id="temperature">
+          <strong>Current city</strong>
+        </h3>
+        <br />
+        <form id="text-box">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your city here"
+            autocomplete="on"
+            id="search-city"
+          />
+          <br />
+          <button id="Update" class="buttonCSS1">Update</button>
+          <button id="Current Location" class="buttonCSS2">Current Location</button>
+          <br />
+          <br/>
+          <hr/>
+          <br/>
+          <br/>
+          <p>Forecast for the next 5 days</p>
+        </form>
+        <div class="row">
+           <div class="container px-5 py-5">
+        <div class="row">
+            <div class="col mx-1">
+            
+                Today
+                 </br>
+                  12° / 16°
+        </br>
+                🌧</div>
+            <div class="col mx-1">Tomorrow
+                 </br>10° / 17° </br>
+                 ☀
+                </div>
+            <div class="col mx-1">Monday
+                 </br>
+                  11° / 18° 
+                   </br>
+                   ☁</div>
+            <div class="col mx-1">Tuesday
+                 </br>
+                  12° / 19°
+                   </br>
+                    ☁ </div>
+            <div class="col mx-1">Wednesday
+                 </br>
+                  13° / 23°
+                   </br>
+                    ☁ </div>
+        </div>
+    </div>
+    </div>
+    <script>
+   let now = new Date();
+let hours = now.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
+let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+let days = [
+  "Sunday",
+  "Monday",
+  "Tueday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
+let day = days[now.getDay()];
+let h3 = document.querySelector("h3");
+h3.innerHTML = `${day}     ${hours}:${minutes}`;
+
+function searchCity(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-city");
+  let h3 = document.querySelector("h3");
+  h3.innerHTML = `${searchInput.value}`;
+  showCity(searchInput.value);
+}
+let formInput = document.querySelector("#text-box");
+formInput.addEventListener("submit", searchCity);
+function showTemperature(response) {
+  let temperature = Math.round(response.data.main.temp);
+  let cityName=response.data.name;
+  let h3=document.querySelector("h3");
+  h3.innerHTML=`It is currently ${temperature} degrees Celcius in ${cityName}`;
+}
+function showCity(cityName) {
+  event.preventDefault();
+    let apiKey = "c83f0b36646f8f213130092c5eb7cca0";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+}
+
+</script>
+</body>
+</html>
