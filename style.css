@@ -1,0 +1,89 @@
+    h1 {
+      color: purple;
+      text-align: center;
+      border-radius: 20px;
+      padding: 30px;
+      margin: 50px;
+      box-shadow: 0 4px 6px 0 rgba(34, 60, 80, 0.16);
+      transition: 200ms all ease-in-out;
+      box-shadow: 5px 5px 2px gray;
+      background: rgb(182, 76, 177)
+    
+}
+   .buttonCSS1 {
+      color: white;
+      background: rgb(128, 136, 209);
+      border-radius: 20px;
+      border: white;
+      box-shadow: 5px 5px 2px gray;
+      padding: 10px;
+      margin: 20px;
+         }
+       .buttonCSS2 {
+      color: white;
+      background: rgb(128, 136, 209);
+      border-radius: 20px;
+      border: white;
+      box-shadow: 5px 5px 2px gray;
+      padding: 10px;
+         }
+.buttonCSS1:hover {
+      color: purple;
+      border-radius: 20px;
+      background-color: white;
+    }
+
+.buttonCSS2:hover {
+      color: purple;
+      border-radius: 20px;
+      background-color: white;
+    }
+    h2 {
+      text-align: center;
+      margin: 30px;
+      padding: 20px;
+      color: purple;
+    }
+    form {
+      width: 300px;
+      height: 300px;
+      margin: auto;
+    }
+    .back {
+      background: url(https://images.pexels.com/photos/907485/pexels-photo-907485.jpeg?cs=srgb&dl=pexels-ithalu-dominguez-907485.jpg&fm=jpg);
+      display: block;
+      margin: 40px auto;
+      border-radius: 10px;
+      box-shadow: 7px 7px 15px rgb(0, 0, 0, 0.15);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    .row {
+      color: rgb(211, 50, 77);
+      font-weight: bold;
+      text-align: center      
+      }
+    
+     .row:hover {
+      color: purple;
+      transition: 150ms all ease-in-out;
+    }
+  
+    h3 {
+      color: rgb(214, 67, 92);
+      text-align: center;
+    }
+
+    h4 {
+    color: rgb(214, 67, 92);
+    padding: 50px;
+    }
+    p {
+        padding: 40px;
+        color: purple;
+        margin: -50px;
+        font-size: 30px;
+        width: 500px;
+        text-align: left; 
+    }
